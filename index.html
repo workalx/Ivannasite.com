@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привіт</title>
+    <link rel="stylesheet" href="ivana.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <img src="Logo.html/1732728068927.webp" alt="Логотип" />
+        </div>
+    </header>
+
+    <div class="fixed-center-block">
+        <img src="Logo.html/iva.jpg " alt="Фото" class="center-image">
+        <h1>Привіт, мене звати Іванна</h1>
+        <p>Митець, люблю малювати, навчаюся в школі. Мені 20 років. У свій вільний час обожнюю чашку кави та хорошу партію UNO з друзями</p>
+
+        </div>
+
+    <button class="contacts-button">Контакти</button>
+    <div class="contacts-popup">
+        <ul>
+            <li><a href="https://www.instagram.com/soul_eater_so_stfd?igsh=bDU1NG8xaTRqNzFi">Instagram </a></li>
+            <li><a href="https://t.me/Kiromiln">Telegram </a></li>
+             </ul>
+    </div>
+
+    <script>
+   
+   // Отримуємо елементи кнопки та блоку
+const contactButton = document.querySelector('.contacts-button');
+const contactsPopup = document.querySelector('.contacts-popup');
+
+// Показувати блок при натисканні на кнопку
+contactButton.addEventListener('click', () => {
+    contactsPopup.style.display = contactsPopup.style.display === 'block' ? 'none' : 'block';
+    
+    // Зміна кольору кнопки та активування анімації переливу
+    contactButton.style.animation = 'gradient 3s infinite';
+    contactButton.style.backgroundColor = '#ff3e00'; // Початковий фон
+});
+
+// Переливання кольорів кнопки при наведенні
+contactButton.addEventListener('mouseover', () => {
+    if (contactsPopup.style.display !== 'block') {
+        contactButton.style.animation = 'gradient 3s infinite'; // Переливання кольорів тільки коли блок не активний
+        contactButton.style.background = ''; // Забрати звичайний фон
+    }
+});
+
+// Зупинка анімації при відведенні мишки
+contactButton.addEventListener('mouseout', () => {
+    if (contactsPopup.style.display !== 'block') {
+        contactButton.style.animation = ''; // Зупинити анімацію при відведенні мишки
+        contactButton.style.background = '#ff3e00'; // Встановити стандартний фон без анімації
+    }
+});
+
+// Клік по будь-якій частині сайту, щоб зняти активний стан кнопки
+document.addEventListener('click', (event) => {
+    if (!contactButton.contains(event.target) && !contactsPopup.contains(event.target)) {
+        contactsPopup.style.display = 'none'; // Сховати блок
+        contactButton.style.background = '#000'; // Повернути чорний колір
+        contactButton.style.animation = ''; // Зупинити анімацію
+    }
+});
+
+// Додамо CSS анімацію для кнопки
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes gradient {
+    0% { background: linear-gradient(45deg, #ff3e00, #DAA520, #DC143C, #3CB371, #4169E1, #FF1493, #6A5ACD, #DA70D6, #40E0D0, #FF8C00, #9370DB); }
+    50% { background: linear-gradient(45deg, #FF1493, #ff3e00, #DAA520, #DC143C, #3CB371, #4169E1, #6A5ACD, #DA70D6, #40E0D0, #FF8C00, #9370DB); }
+    100% { background: linear-gradient(45deg, #4169E1, #FF1493, #ff3e00, #DAA520, #DC143C, #3CB371, #6A5ACD, #DA70D6, #40E0D0, #FF8C00, #9370DB); }
+}
+`;
+document.head.appendChild(style);
+
+        
+    </script>
+</body>
+</html>
